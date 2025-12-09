@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('produtos', function (Blueprint $table) {
-            $table->string('categoria',100); #se quiser dar rollback nessa coluna, é necessário trocar "string" por "DropColumn" e tirar o 100
+            $table->integer('categoria'); #se quiser dar rollback nessa coluna, é necessário trocar "string" por "DropColumn" e tirar o 100
         });
     }
 

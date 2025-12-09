@@ -4,11 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Artmaxi') }}</title>
+        <title>{{ config('Artmaxi', 'Show') }}</title>
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+
+        
         <link rel="stylesheet" href="/css/styles.css">
         <!--CSS Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+        
     </head>
 
     <body>
@@ -62,21 +67,26 @@
                     </form>                                           
                 </div>
 
+                        <div class="container-create-buttons">
+                            <form action="/produtos/{{$produto->id}}" method="POST" class="container-create-buttons1">
+                                @csrf
+                                @method('DELETE')
+                                <a href='/produtos/{{$produto->id}}' class="btn btn-danger delete-btn" onclick="event.preventDefault();
+                                this.closest('form').submit();">Deletar produto</a>
+                            </form>
 
-                        <form action="/produtos/{{$produto->id}}" method="POST">
-                             @csrf
-                             @method('DELETE')
-                            <a href='/produtos/{{$produto->id}}' class="btn btn-danger delete-btn" onclick="event.preventDefault();
-                            this.closest('form').submit();">Deletar produto</a>
-                        </form>
-
-                        <form action="/produtos/edit/{{$produto->id}}" method="GET">
-                             @csrf
-                            <a href='/produtos/edit/{{$produto->id}}' class="btn btn-info edit-btn" onclick="event.preventDefault();
-                            this.closest('form').submit();">Atualizar produto</a>   
-                        </form>
+                            <form action="/produtos/edit/{{$produto->id}}" method="GET" class="container-create-buttons2">
+                                @csrf
+                                <a href='/produtos/edit/{{$produto->id}}' class="btn btn-info edit-btn" onclick="event.preventDefault();
+                                this.closest('form').submit();">Atualizar produto</a>   
+                            </form>
+                        </div>
             </div>
         </div>
+        <br>
+
+
+
 
     </body>
 

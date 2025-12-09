@@ -67,16 +67,16 @@
                 <div class="form-group">
                     <label for="title">Categoria:</label>
                     <select class="form-control" id="categoria" name="categoria">
-                        <option value="0">Cavaletes</option>
-                        <option value="1">Tintas</option>
-                        <option value="2">Pincéis</option>
-                        <option value="3">Quadros</option>
-                        <option value="4">Paletas</option>
-                        <option value="5">Argilas</option>
-                        <option value="6">Ferramentas</option>
-                        <option value="7">Papéis</option>
-                        <option value="8">Lápis</option>
-                        <option value="9">Canetas {{$produto->categoria == 5 ? "selected='selected'" : " "}}</option>
+                            <option value="1">Cavaletes</option>
+                            <option value="2">Tintas</option>
+                            <option value="3">Pincéis</option>
+                            <option value="4">Quadros</option>
+                            <option value="5">Paletas</option>
+                            <option value="6">Argilas</option>
+                            <option value="7">Ferramentas</option>
+                            <option value="8">Papéis</option>
+                            <option value="9">Lápis</option>
+                            <option value="10">Canetas</option>
                     </select>
                 </div>
                 <div class="form-group">

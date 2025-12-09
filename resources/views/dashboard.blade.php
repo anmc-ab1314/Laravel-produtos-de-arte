@@ -37,7 +37,7 @@
                             <li class ='nav-item'>
                                 <form action="/logout" method="POST">
                                     @csrf
-                                    <a href='/logout' class="nav-link" onclick="event.preventDefault();
+                                    <a href='{{ route('logout')}}' class="nav-link" onclick="event.preventDefault();
                                        this.closest('form').submit();">Logout</a>
                                 </form>
                             </li>
@@ -63,6 +63,8 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Preço</th>
                             <th scope="col">Descrição</th>
+                            <th scope="col"> </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -76,8 +78,9 @@
                                 <form action='/produtos/remove-lista/{{$produto->id}}' method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="/dashboard/{{$produto->id}}">Remover</a></td>
+                                    <button type="submit" class='btn btn-danger' href="/dashboard/{{$produto->id}}">Remover</button>
                                 </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

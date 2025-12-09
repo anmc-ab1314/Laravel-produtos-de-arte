@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Artmaxi') }}</title>
+        <title>{{ config('Artmaxi', 'Artmaxi') }}</title>
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
 
@@ -37,8 +37,9 @@
                             <li class ='nav-item'>
                                 <form action="/logout" method="POST">
                                     @csrf
-                                    <a href='/logout' class="nav-link" onclick="event.preventDefault();
+                                    <a href='{{ route('logout')}}' class="nav-link" onclick="event.preventDefault();
                                        this.closest('form').submit();">Logout</a>
+                                </form>
                             </li>
 
                             @endauth   
@@ -64,14 +65,23 @@
                 <p>Produto: {{$produto->nome}}</p>
                 <p>Preço: R${{$produto->preco}}</p>
                 <img src="/img/produtos/{{$produto->image}}" width="200" height="200"> 
-                <a href="/produtos/{{$produto->id}}" class='btn btn-primary'> Saiba mais</a>
+                <a href="/produtos/{{$produto->id}}" class='btn btn-primary' id="saiba_mais"> Saiba mais</a>
             </div>
         @endforeach
         </div>
+        <br>
+        @if(count($produtos) >= 8)
+            <div class="ver_mais">
+                <a class="btn btn-primary" href="/produtos">Ver mais</a>
+            </div>
+        @endif
         @if(count($produtos) == 0 && $search)
             <p>Não há produtos relacionados a sua pesquisa '{{$search}}'</p>
         @elseif (count($produtos) == 0)
             <p>Não há produtos no momento.'</p>
         @endif
+        <div class='page-footer'>
+
+        </div>
     </body>
 </html>

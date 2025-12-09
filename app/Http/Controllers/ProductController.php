@@ -22,11 +22,39 @@ class ProductController extends Controller
 
         } else {
 
-            $produtos = Produto::all();
+            $produtos = Produto::take(8)->get();
 
         }
         return view('welcome', ['produtos'=>$produtos, 'search'=>$search]);
     }
+
+    public function allProdutos() {
+
+        $search = request('search');
+        $selectCategoriaID = request('selectCategoria');
+
+        if($search){
+
+            $produtos = Produto::where([
+                ['nome', 'like', '%'.$search.'%']
+
+            ])->get();
+        }
+        elseif($selectCategoriaID){
+        
+            $produtos = Produto::where([
+                ['categoria', $selectCategoriaID]
+
+            ])->get();
+
+        } else {
+
+            $produtos = Produto::all();
+
+        }
+        return view('produtos', ['produtos'=>$produtos, 'search'=>$search]);
+    }
+
 
     public function create(){
         
@@ -63,8 +91,17 @@ class ProductController extends Controller
 
         $produto = Produto::findOrFail($id);
 
-        return view('show', ['produto' => $produto]);
 
+        return view('show', ['produto' => $produto]);
+    }
+
+    public function dashboard(){
+
+        $user = Auth::user();
+
+        $produtos = $user->listaProdutos;
+
+        return view('/dashboard', ['produtos'=>$produtos]);
     }
 
     public function addLista($id){
@@ -89,15 +126,6 @@ class ProductController extends Controller
         return redirect('/dashboard')->with('msg', $produto->nome . 'removido de sua lista');
     }
 
-    public function dashboard(){
-
-        $user = Auth::user();
-
-        $produtos = $user->listaProdutos;
-
-        return view('/dashboard', ['produtos'=>$produtos]);
-    }
-
         public function destroy($id){
 
         Produto::findOrFail($id)->delete();
@@ -116,6 +144,6 @@ class ProductController extends Controller
 
         Produto::findOrFail($request->id)->update($request->all());
 
-        return redirect('/');
+        return redirect('/produtos');
         }
 }

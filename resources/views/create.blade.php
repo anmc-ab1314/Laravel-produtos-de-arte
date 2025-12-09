@@ -14,24 +14,35 @@
 
     <body>
         <div class='main-header'>
-            <h1>Loja Artmaxi - Venda de produtos de arte</h1>
+            <h1 class='lojaartmaxi'>Loja Artmaxi - Venda de produtos de arte</h1>
             <header>
                 <nav class="navbar">
                         <ul class="navbar-nav flex-row me-auto">
                             <li class ='nav-item'><a href='/' class="nav-link">Voltar ao início</a></li>
                             <li class ='nav-item'><a href='/produtos/add-produto' class="nav-link">Adicionar Produto</a></li>
-                            <li class ='nav-item'><a href='/deletar-produto' class="nav-link">Deletar Produto</a></li>
-                            <li class ='nav-item'><a href='/atualizar-produto' class="nav-link">Atualizar Produto</a></li>
                         </ul>
-            
+
                         <ul class="navbar-nav flex-row ms-auto">
-                            <li class ='nav-item mt-2'>
+                            <li class ='nav-item mt-2 mx-3'>
                                 <form action="/" method="GET" style="width: 400px">
                                 <input type ='text' id='search' name='search' class="form-control" placeholder="Procurar produtos...">
                                 </form>
                             </li>
-                            <li class ='nav-item'><a href='/login-usuario' class="nav-link">Login</a></li>
-                            <li class ='nav-item'><a href='/cadastro-usuario' class="nav-link">Cadastrar</a></li>
+                            @auth
+                            <li class ='nav-item'><a href='/dashboard' class="nav-link">Lista de compras</a></li>
+                            <li class ='nav-item'>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <a href='/logout' class="nav-link" onclick="event.preventDefault();
+                                       this.closest('form').submit();">Logout</a>
+                                </form>
+                            </li>
+
+                            @endauth   
+                            @guest
+                            <li class ='nav-item'><a href='/login' class="nav-link">Login</a></li>
+                            <li class ='nav-item'><a href='/register' class="nav-link">Cadastrar</a></li>
+                            @endguest
                         </ul>
                 </nav>
             </header>
@@ -51,16 +62,16 @@
                 <div class="form-group">
                     <label for="title">Categoria:</label>
                     <select class="form-control" id="categoria" name="categoria">
-                        <option value="0">Cavaletes</option>
-                        <option value="1">Tintas</option>
-                        <option value="2">Pincéis</option>
-                        <option value="3">Quadros</option>
-                        <option value="4">Paletas</option>
-                        <option value="5">Argilas</option>
-                        <option value="6">Ferramentas</option>
-                        <option value="7">Papéis</option>
-                        <option value="8">Lápis</option>
-                        <option value="9">Canetas</option>
+                            <option value="1">Cavaletes</option>
+                            <option value="2">Tintas</option>
+                            <option value="3">Pincéis</option>
+                            <option value="4">Quadros</option>
+                            <option value="5">Paletas</option>
+                            <option value="6">Argilas</option>
+                            <option value="7">Ferramentas</option>
+                            <option value="8">Papéis</option>
+                            <option value="9">Lápis</option>
+                            <option value="10">Canetas</option>
                     </select>
                 </div>
                 <div class="form-group">

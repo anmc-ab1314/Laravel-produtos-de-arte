@@ -30,6 +30,17 @@ body{
   background-color: rgb(53, 54, 97);
 }
 
+.page-footer{
+  margin-top: 50px;
+  bottom: 0px;
+  width: 100%;
+  border: black;
+}
+
+.ver_mais{
+  flex: auto;
+}
+
 /*Dashboard*/
 .dashboard-title-container{
   margin-bottom: 30px;
@@ -41,22 +52,7 @@ body{
 }
 
 /*Produtos*/
-.Cavaletes{
-  background-color: powderblue;
-}
-.Tintas{
-  background-color: whitesmoke;
-}
 
- #product-create-container{
-  padding:30px;
- }
-
- #product-create-container label{
-  font-weight: bold;
- }
-
- 
 .grid img {
     width: 200px;
     height: 200px;
@@ -70,18 +66,24 @@ img {
 
 }
 
-.img-preview{
-  margin-left: 10px;
-  border: 1px solid #555;
-  border-radius: 10%;
-  height: 100px;
-  width: auto;
+.img-fluid{
+  width: 500px;
+  height: 500px;
+}
+
+.container-create-buttons{
+  display: flex;
+}
+
+.container-create-buttons1,
+.container-create-buttons2{
+  padding: 5px;
 }
 
 .grid {
     margin-left: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
@@ -102,7 +104,46 @@ img {
 
 }
 
- /*Criar Produto*/
+[class^="Cat"] #saiba_mais{
+  margin-left: 100px;
+  margin-top: 150px;
+}
+
+.searchCategory{
+  display: flex;
+}
+
+.searchSubmit{
+  display: flex;
+}
+
+.gridRelated{
+  padding: 30px;
+  display: flex;
+  width: 100px;
+}
+.relatedLeft{
+    flex: 1;
+    padding: 10px
+}
+
+.relatedRight{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+ /*Criar e editar Produto*/
+
+ #product-create-container{
+  padding:30px;
+ }
+
+ #product-create-container label{
+  font-weight: bold;
+ }
+
+
 #product-create-container input,
 #product-create-container select,
 #product-create-container textarea{
@@ -113,6 +154,17 @@ img {
 
 }
 
+.img-preview{
+  margin-left: 10px;
+  border: 1px solid #555;
+  border-radius: 10%;
+  height: 100px;
+  width: auto;
+}
+
 /*Login e Cadastro*/
 
 
+html, body {
+    overflow-x: hidden;
+}
